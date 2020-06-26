@@ -7,4 +7,7 @@ Repository for studying architeture model and the [Deno](https://deno.land/) run
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## Run
-docker-compose run app
+sudo docker-compose run app
+
+## Tests
+sudo docker-compose run tests
