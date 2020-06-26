@@ -8,3 +8,14 @@ services:
       - ./app:/app
     working_dir: /app
     entrypoint: deno run main.ts
+  deno:
+    image: 'ciebit/deno'
+    volumes:
+      - ./app:/app
+    working_dir: /app
+  tests:
+    image: 'ciebit/deno'
+    volumes:
+      - .:/project
+    working_dir: /project
+    entrypoint: deno test tests/
