@@ -1,5 +1,13 @@
 version: '3'
 services:
+  www:
+    image: 'ciebit/deno'
+    ports:
+      - '8000:80'
+    volumes:
+      - ./app:/app
+    working_dir: /app
+    entrypoint: deno run --unstable --allow-net --allow-read server.ts
   app:
     image: 'ciebit/deno'
     ports:
