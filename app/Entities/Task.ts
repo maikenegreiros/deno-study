@@ -1,26 +1,33 @@
 export default class Task {
-  private title: String;
-  private description: String;
+  private id: string;
+  private title: string;
+  private description: string;
   private createdAt: Date;
 
-  public constructor(title: String)
+  public constructor(id: string, title: string, description = '')
   {
+    this.id = id;
     this.title = title;
-    this.description = '';
+    this.description = description;
     this.createdAt = new Date;
   }
 
-  public getTitle(): String
+  public getId(): string
+  {
+    return this.id;
+  }
+
+  public getTitle(): string
   {
     return this.title;
   }
 
-  public setDescription(description: String)
+  public setDescription(description: string)
   {
     this.description = description;
   }
 
-  public getDescription(): String
+  public getDescription(): string
   {
     return this.description;
   }
