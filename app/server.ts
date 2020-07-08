@@ -1,32 +1,28 @@
-import { serve, ServerRequest } from 'https://deno.land/std/http/server.ts'
-import { readFileStr } from "https://deno.land/std/fs/mod.ts";
+import AppRequest from './Http/Implements/StdRequest.ts'
+import AppResponse from './Http/Implements/StdResponse.ts'
+import Controller from './Controllers/Controller.ts'
+import { serve } from 'https://deno.land/std/http/server.ts'
+import SimpleFileController from './Controllers/SimpleFile.ts'
 
 const server = serve({port: 80})
 console.log('Server start')
 
 for await (const request of server)
 {
-  let fileRead: Promise<string>
+  const appRequest = new AppRequest(request)
+  const appResponse = new AppResponse(request)
+  let controller: Controller
 
   switch(request.url){
     case '/':
-      fileRead = readFileStr('./Views/index.html')
+      controller = new SimpleFileController('./Views/index.html')
       break
     case '/create/':
-      fileRead = readFileStr('./Views/form.html')
+      controller = new SimpleFileController('./Views/form.html')
       break
     default:
-      fileRead = readFileStr('./Views/error404.html')
+      controller = new SimpleFileController('./Views/error404.html')
   }
 
-  fileRead.then((fileContent: string) => {
-    response(request, fileContent)
-  })
-}
-
-function response(request: ServerRequest, body: string): void
-{
-  request.respond({
-    body: body
-  })
+  controller.run(appRequest, appResponse)
 }
