@@ -1,7 +1,8 @@
-import tasksArray from '../database/mocks/tasks.ts';
-import Task from '../Entities/Task.ts';
+import tasksArray from '../../database/mocks/tasks.ts';
+import Task from '../../Entities/Task.ts';
+import TasksRepository from './Tasks.ts'
 
-class Tasks
+class TasksMock implements TasksRepository
 {
   public getAll(): Array<Task>
   {
@@ -17,4 +18,4 @@ class Tasks
   }
 }
 
-export default Tasks;
+export default TasksMock;

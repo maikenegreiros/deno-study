@@ -1,6 +1,5 @@
 import { assertEquals } from 'https://deno.land/std/testing/asserts.ts';
-// import Task from '../../../app/Entities/Task.ts';
-import TasksRepository from '../../../app/Repositories/Tasks.ts';
+import TasksRepository from '../../../app/Repositories/Tasks/TasksMock.ts';
 
 const tasksRepository = new TasksRepository;
 
