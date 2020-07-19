@@ -4,7 +4,7 @@ export default class Task {
   private description: string;
   private createdAt: Date;
 
-  public constructor(id: string, title: string, description = '')
+  public constructor(title: string, description = '', id = '0')
   {
     this.id = id;
     this.title = title;
@@ -20,11 +20,6 @@ export default class Task {
   public getTitle(): string
   {
     return this.title;
-  }
-
-  public setDescription(description: string)
-  {
-    this.description = description;
   }
 
   public getDescription(): string
