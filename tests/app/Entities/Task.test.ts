@@ -4,7 +4,7 @@ import Task from '../../../app/Entities/Task.ts';
 
 const expectedTitle = 'Create Menu bar';
 const expectedDescription = 'Menu bar must be responsive';
-const task = new Task(expectedTitle);
+const task = new Task('1', expectedTitle);
 task.setDescription(expectedDescription);
 
 Deno.test("testing task title", () => {
@@ -20,7 +20,7 @@ Deno.test("testing task description", () => {
 Deno.test("testing creation date", async () => {
   const beforeTaskCreation = new Date;
   await delay(100);
-  const dateTask = new Task('Fix date generation issue');
+  const dateTask = new Task('2', 'Fix date generation issue');
   await delay(100);
   const afterTaskCreation = new Date;
   assert(dateTask.getCreatedAt().getTime() > beforeTaskCreation.getTime());
